@@ -19,11 +19,13 @@ def test_optimization_method(optimization_method_func, method_name: str) -> dict
     plot_path(np.array(results.path))
     plot_save(f"output/{method_name}_path.png")
 
+    decimals_round = 6
+
     results_dictionary = dict[str, str]()
     results_dictionary[f"Method name"] = method_name
-    results_dictionary[f"Local minimum (x, y)"] = f"{results.local_minimum}"
-    results_dictionary[f"Function value"] = f"{differentiable_function(results.local_minimum)}"
+    results_dictionary[f"Local minimum (x, y)"] = f"{results.local_minimum.round(decimals_round)}"
+    results_dictionary[f"Function value"] = f"{round(differentiable_function(results.local_minimum), decimals_round)}"
     results_dictionary[f"Iteration count"] = f"{results.iteration}"
-    results_dictionary[f"Time (seconds)"] = f"{time.time() - start_time}"
+    results_dictionary[f"Time (seconds)"] = f"{round(time.time() - start_time, decimals_round)}"
 
     return results_dictionary
