@@ -2,9 +2,17 @@ import numpy as np
 from autograd import grad
 from numpy import linalg as LA
 
-from optimization_results_module import *
+class optimization_results(object):
+    """docstring for optimization_results."""
 
-def SDG(
+    def __init__(self, local_minimum: np.ndarray, iteration: int, path: list[np.ndarray]):
+        super(optimization_results, self).__init__()
+        self.local_minimum = local_minimum
+        self.iteration = iteration
+        self.path = path
+
+
+def sdg(
     starting_point: np.ndarray,
     differentiable_function,
     max_iterations: int

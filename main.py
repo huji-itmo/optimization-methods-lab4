@@ -1,10 +1,10 @@
 from latex import get_latex_table
-from stochastic_gradient_descent import SDG
+from optimizations import sdg
 from test import test_optimization_method
 
 
 if __name__ == "__main__":
-    functions_to_test = {"SDG": SDG}
+    functions_to_test = {"SDG": sdg}
     all_results = list[dict[str, str]]()
     for method_name, method_func in functions_to_test.items():
         results = test_optimization_method(method_func, method_name)

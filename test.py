@@ -1,7 +1,7 @@
 import time
 import numpy as np
 
-from optimization_results_module import optimization_results
+from optimizations import optimization_results
 from plot import plot_function, plot_path, plot_save, plot_show
 
 def differentiable_function(xy):
