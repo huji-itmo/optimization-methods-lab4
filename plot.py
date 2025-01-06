@@ -2,7 +2,8 @@ from matplotlib import pyplot as plt
 import numpy as np
 from numpy import linalg as LA
 
-def plot_path(path):
+def plot_path(path: np.ndarray, name: str):
+    plt.title(name)
 
     for i in range(len(path)):
         if (LA.norm(path[i]) > 20):

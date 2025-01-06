@@ -16,11 +16,11 @@ def test_optimization_method(optimization_method_func, method_name: str) -> dict
 
     # Преобразуем список в массив NumPy
     plot_function(differentiable_function)
-    plot_path(np.array(results.path))
+    plot_path(np.array(results.path), method_name)
     plot_save(f"output/{method_name}_path.png")
     # plot_show()
 
-    decimals_round = 6
+    decimals_round = 4
 
     results_dictionary = dict[str, str]()
     results_dictionary[f"Method name"] = method_name

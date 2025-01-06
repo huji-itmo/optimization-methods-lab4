@@ -5,10 +5,10 @@ from test import test_optimization_method
 
 if __name__ == "__main__":
     functions_to_test = {
-        "stochastic_gradient_descent": sdg,
+        "SGD": sdg,
         "AdaGrad": adaptive_grad,
         "sdg_with_momentum": sdg_with_momentum,
-        "Nesterov Accelerated Gradients": nag,
+        "NAG": nag,
         "RMSprop": RMSprop,
         "Adam": adam
     }
