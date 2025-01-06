@@ -2,7 +2,8 @@ import time
 import autograd.numpy as np
 from autograd import grad
 from numpy import linalg as LA
-import matplotlib.pyplot as plt
+
+from plot import plot_function, plot_path, plot_show
 
 
 def differentiable_function(xy):
@@ -24,8 +25,8 @@ path = [arg.copy()]
 
 for i in range(999):
     grad_value = gradient(arg)
-    
-    #(x_{k+1}, y_{k+1}) = (x_{k}, y_{k}) - a_k * grad f(x_{k}, y_{k})    
+
+    #(x_{k+1}, y_{k+1}) = (x_{k}, y_{k}) - a_k * grad f(x_{k}, y_{k})
     arg = arg - (learning_rate * grad_value)
     # Сохраняем текущую точку в пути
     path.append(arg.copy())
@@ -34,6 +35,7 @@ for i in range(999):
     print("Gradient: ", grad_value)
     print("Updated point: ", arg)
     # print("Norm of gradient: ", LA.norm(grad_value))
+
     if LA.norm(grad_value) < stop_criteria_value:
         end_time = time.time()
         print(f"\n\n")
@@ -46,36 +48,9 @@ for i in range(999):
         break
 
 
-# Визуализация функции и пути
-x_vals = np.linspace(-6, 6, 600)
-y_vals = np.linspace(-6, 6, 600)
-X, Y = np.meshgrid(x_vals, y_vals)
-Z = differentiable_function(np.array([X, Y]))
-
-square_dimensions = 20;
-
-plt.figure(figsize=(10, 8))
-contour = plt.contour(X, Y, Z, levels=np.linspace(-square_dimensions, square_dimensions, square_dimensions+1), cmap="viridis")
-plt.colorbar(contour)
-
-# Отметим путь точки
 # Преобразуем список в массив NumPy
 path = np.array(path)
 
-plt.plot(
-    path[:, 0],
-    path[:, 1],
-    marker="o",
-    color="violet",
-    markersize=5,
-    label="Path to minimum",
-)
-
-plt.text(initial_point[0], initial_point[1], 'Starting\n point', fontsize=8)
-
-plt.title("Path to Local Minimum of the Function")
-plt.xlabel("x")
-plt.ylabel("y")
-plt.legend()
-plt.grid()
-plt.show()
+plot_path(path)
+plot_function(differentiable_function)
+plot_show()
