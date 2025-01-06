@@ -11,13 +11,14 @@ def differentiable_function(xy):
 
 def test_optimization_method(optimization_method_func, method_name: str) -> dict[str, str]:
     start_time = time.time()
-    initial_point = np.array([5.0, 1.0])
-    results: optimization_results = optimization_method_func(initial_point, differentiable_function, 1000)
+    initial_point = np.array([3.0, 1.0])
+    results: optimization_results = optimization_method_func(initial_point, differentiable_function, 500)
 
     # Преобразуем список в массив NumPy
     plot_function(differentiable_function)
     plot_path(np.array(results.path))
     plot_save(f"output/{method_name}_path.png")
+    # plot_show()
 
     decimals_round = 6
 

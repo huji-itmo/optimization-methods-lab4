@@ -1,9 +1,14 @@
-
-
 from matplotlib import pyplot as plt
 import numpy as np
+from numpy import linalg as LA
 
 def plot_path(path):
+
+    for i in range(len(path)):
+        if (LA.norm(path[i]) > 20):
+            path = path[:i-1]
+            break;
+
     plt.plot(
         path[:, 0],
         path[:, 1],
@@ -16,8 +21,8 @@ def plot_path(path):
     plt.text(path[0, 0], path[0, 1], 'Starting\n point', fontsize=8)
 
 def plot_function(func):
-    x_vals = np.linspace(-6, 6, 600)
-    y_vals = np.linspace(-6, 6, 600)
+    x_vals = np.linspace(0, 4, 600)
+    y_vals = np.linspace(-1, 5, 600)
     X, Y = np.meshgrid(x_vals, y_vals)
     Z = func(np.array([X, Y]))
 
@@ -29,7 +34,6 @@ def plot_function(func):
     plt.colorbar(contour)
 
 def plot_show():
-    plt.title("Path to Local Minimum of the Function")
     plt.xlabel("x")
     plt.ylabel("y")
     plt.legend()
@@ -37,9 +41,9 @@ def plot_show():
     plt.show()
 
 def plot_save(path: str):
-    plt.title("Path to Local Minimum of the Function")
     plt.xlabel("x")
     plt.ylabel("y")
     plt.legend()
     plt.grid()
-    plt.savefig(path)
+    plt.savefig(path, dpi=1000)
+    plt.close()
