@@ -35,3 +35,11 @@ def plot_show():
     plt.legend()
     plt.grid()
     plt.show()
+
+def plot_save(path: str):
+    plt.title("Path to Local Minimum of the Function")
+    plt.xlabel("x")
+    plt.ylabel("y")
+    plt.legend()
+    plt.grid()
+    plt.savefig(path)
