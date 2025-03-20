@@ -17,8 +17,8 @@ class optimization_results(object):
         self.path = path
 
 
-STOP_GRADIENT_VALUE: Final[float] = 0.1
-LEARNING_RATE: Final[float] = 0.005
+STOP_GRADIENT_VALUE: Final[float] = 0.0001
+LEARNING_RATE: Final[float] = 0.05
 VELOCITY_CHANGE_RATE: Final[float] = 0.9
 EPSILON: Final[float] = 1e-8  # сглаживающий параметр, чтобы не делить на ноль
 BETA_2: Final[float] = 0.99  # for adam
